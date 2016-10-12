@@ -92,7 +92,7 @@ namespace ISM2DArrays
         }
         static void Main(string[] args)
         {
-            ConsoleConfig("Двовимірні масиви");
+            ConsoleConfig("Двовимірні масиви ");
             
             Console.WriteLine("Введіть висоту і ширину матриці A");
             uint height=uint.Parse(Console.ReadLine()),lenght=uint.Parse(Console.ReadLine());
@@ -114,7 +114,7 @@ namespace ISM2DArrays
             else { Console.WriteLine("Обернена матриця :"); WriteArray(Arr3); }
             
 
-            Console.ReadKey();
+          Console.ReadKey();
 
         }
     }
