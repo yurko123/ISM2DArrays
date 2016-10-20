@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace ISM2DArrays
 {
@@ -55,6 +56,7 @@ namespace ISM2DArrays
            
             int n = Matrix.GetLength(0);
             double sum = 0;
+            if (n == 1) return Matrix[0, 0];
             if (n == 2) return Matrix[0, 0] * Matrix[1, 1] - Matrix[1, 0] * Matrix[0, 1];
             for (int i = 0; i < n; i++)
                 sum += Det(Minor(Matrix, 0, i)) * Matrix[0, i] * Math.Pow(-1, i);
@@ -93,8 +95,8 @@ namespace ISM2DArrays
         static void Main(string[] args)
         {
             ConsoleConfig("Двовимірні масиви ");
-            
-            Console.WriteLine("Введіть висоту і ширину матриці A");
+            Stopwatch _time = new Stopwatch();
+            /*Console.WriteLine("Введіть висоту і ширину матриці A");
             uint height=uint.Parse(Console.ReadLine()),lenght=uint.Parse(Console.ReadLine());
            Console.WriteLine("Введіть висоту і ширину матриці B");
             uint height1 = uint.Parse(Console.ReadLine()), lenght1 = uint.Parse(Console.ReadLine());
@@ -104,14 +106,18 @@ namespace ISM2DArrays
             WriteArray(Arr1);
             double[,] Arr2 = ProductMatrix(Arr, Arr1);
             if (Arr2 == null) Console.WriteLine("Неможливо перемножити матриці!!!");
-            else WriteArray(Arr2);
+            else WriteArray(Arr2);*/
              Console.WriteLine("Введіть висоту або ширину матриці C ");
             uint height2 = uint.Parse(Console.ReadLine());
             double[,] Arr3 = GetRandomArr(height2, height2, -10, 10, 0);
             WriteArray(Arr3);
-            Arr3=rotateMatrix(Arr3);
-            if (Arr3 == null) Console.WriteLine("Детермінант дорівнює нулю!");
-            else { Console.WriteLine("Обернена матриця :"); WriteArray(Arr3); }
+            //Arr3=rotateMatrix(Arr3);
+            _time.Start();
+            Console.WriteLine("Детермінант дорівнює {0}",Det(Arr3));
+            _time.Restart();
+            Console.WriteLine("пораховано за "+ _time.Elapsed);
+            //if (Arr3 == null) Console.WriteLine("Детермінант дорівнює нулю!");
+            //else { Console.WriteLine("Обернена матриця :"); WriteArray(Arr3); }
             
 
           Console.ReadKey();
